@@ -6,6 +6,10 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
+use GameJam\Events\UserWasMadeAdmin;
+use GameJam\Events\UserWasRegistered;
+
+
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
 	use Authenticatable, CanResetPassword;
@@ -31,9 +35,32 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token', 'is_admin'];
 
+	/**
+	 * The attributes that should be casted to native types.
+	 *
+	 * @var array
+	 */
+	protected $casts = [
+	    'is_admin' => 'boolean',
+	];
+
 	public function makeAdmin()
 	{
 		$this->is_admin = true;
+
+		// Notify any services
+		event(new UserWasMadeAdmin($this->id));
 	}
 
+	public static function register($email, $password)
+	{
+		$user = User::create([
+			'email' => $email,
+			'password' => $password
+		]);
+
+		event(new UserWasRegistered($user->id, $user->email));
+
+		return $user;
+	}
 }

@@ -13,7 +13,11 @@ class EventServiceProvider extends ServiceProvider {
 	protected $listen = [
 		'GameJam\Events\UserWasMadeAdmin' => [
 			'GameJam\Handlers\Events\NotifyByEmail@userWasMadeAdmin',
-			'GameJam\Handlers\Events\EventLogger@userWasMadeAdmin'
+			'GameJam\Handlers\Events\EventLogger@userWasMadeAdmin',
+		],
+
+		'GameJam\Events\UserWasRegistered' => [
+			'GameJam\Handlers\Events\EventLogger@userWasRegistered',
 		],
 	];
 

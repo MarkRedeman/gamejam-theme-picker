@@ -1,6 +1,8 @@
 <?php namespace GameJam\Handlers\Events;
 
 use GameJam\Events\UserWasMadeAdmin;
+use GameJam\Events\UserWasRegistered;
+
 use GameJam\User;
 use Log;
 
@@ -18,6 +20,18 @@ class EventLogger {
         Log::info('User was made admin', [
             'user_id' => $user->id,
             'email' => $user->email
+        ]);
+    }
+
+    /**
+     * @param  UserWasRegistered $event
+     * @return void
+     */
+    public function userWasRegistered(UserWasRegistered $event)
+    {
+        Log::info('User was registered', [
+            'user_id' => $event->userId(),
+            'email' => $event->email()
         ]);
     }
 
