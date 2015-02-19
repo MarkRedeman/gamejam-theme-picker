@@ -16,13 +16,13 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
+		DB::table('users')->truncate();
 		// registering default user
 		$user = User::create([
 			'email' 	=> env('ADMIN_EMAIL', 'markredeman@gmail.com'),
-			'password'  => env('ADMIN_PASSWORD', 'secret')
+			'password'  => env('ADMIN_PASSWORD', 'secret'),
+			'is_admin'  => true,
 		]);
-		$user->makeAdmin();
-		$user->save();
 
 		// $this->call('UserTableSeeder');
 	}

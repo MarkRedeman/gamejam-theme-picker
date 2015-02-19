@@ -11,8 +11,9 @@ class EventServiceProvider extends ServiceProvider {
 	 * @var array
 	 */
 	protected $listen = [
-		'event.name' => [
-			'EventListener',
+		'GameJam\Events\UserWasMadeAdmin' => [
+			'GameJam\Handlers\Events\NotifyByEmail@userWasMadeAdmin',
+			'GameJam\Handlers\Events\EventLogger@userWasMadeAdmin'
 		],
 	];
 
