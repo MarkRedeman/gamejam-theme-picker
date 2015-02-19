@@ -9,7 +9,6 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use GameJam\Events\UserWasMadeAdmin;
 use GameJam\Events\UserWasRegistered;
 
-
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
 	use Authenticatable, CanResetPassword;
@@ -44,6 +43,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	    'is_admin' => 'boolean',
 	];
 
+	/**
+	 * Make the use an admin
+	 * @event UserWasMadAdmin
+	 * @return void
+	 */
 	public function makeAdmin()
 	{
 		$this->is_admin = true;
@@ -52,10 +56,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		event(new UserWasMadeAdmin($this->id));
 	}
 
+	/**
+	 * Registers a user
+	 * @event UserWasMadAdmin
+	 * @param  string $email
+	 * @param  string $password
+	 * @return User
+	 */
 	public static function register($email, $password)
 	{
 		$user = User::create([
-			'email' => $email,
+			'email'    => $email,
 			'password' => $password
 		]);
 

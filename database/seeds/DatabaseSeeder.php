@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder {
 		// registering default user
 		$user = User::create([
 			'email' 	=> env('ADMIN_EMAIL', 'markredeman@gmail.com'),
-			'password'  => env('ADMIN_PASSWORD', 'secret'),
+			'password'  => bcrypt(env('ADMIN_PASSWORD', 'secret')),
 			'is_admin'  => true,
 		]);
 
