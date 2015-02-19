@@ -24,9 +24,10 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $routeMiddleware = [
-		'auth' => 'GameJam\Http\Middleware\Authenticate',
+		'auth' 		 => 'GameJam\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-		'guest' => 'GameJam\Http\Middleware\RedirectIfAuthenticated',
+		'guest'      => 'GameJam\Http\Middleware\RedirectIfAuthenticated',
+		'admin'      => 'GameJam\Http\Middleware\Admin',
 	];
 
 }

@@ -15,6 +15,14 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+Route::group([
+    'middleware' => 'admin',
+    'namespace' => 'Admin',
+    'prefix' => 'admin'
+], function() {
+    Route::resource('users', 'UsersController');
+});
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
