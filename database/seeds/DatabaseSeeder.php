@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
 use GameJam\User;
+use GameJam\Theme;
 
 class DatabaseSeeder extends Seeder {
 

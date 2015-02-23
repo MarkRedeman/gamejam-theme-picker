@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
-Route::get('home', 'HomeController@index');
-
+Route::get('/', 'ThemesController@index');
+Route::post('themes', 'ThemesController@store');
+Route::post('themes/{theme}/vote', 'ThemesController@vote');
+Route::delete('themes/{theme}/vote', 'ThemesController@deleteVote');
 
 Route::group([
     'middleware' => 'admin',

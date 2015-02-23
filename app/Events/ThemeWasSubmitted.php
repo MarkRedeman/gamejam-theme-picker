@@ -19,7 +19,6 @@ class ThemeWasSubmitted extends Event {
      */
     public function __construct($themeId, $name, $userId)
     {
-        var_dump("Theme was submitted");
         $this->userId = $userId;
         $this->themeId = $themeId;
         $this->name = $name;

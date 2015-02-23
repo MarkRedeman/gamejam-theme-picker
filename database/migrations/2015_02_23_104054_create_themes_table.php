@@ -15,10 +15,11 @@ class CreateThemesTable extends Migration {
 		Schema::create('themes', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('total_votes')->default(0);
 			$table->string('name')->unique();
-			$table->rememberToken();
 			$table->timestamps();
-		});	}
+		});
+	}
 
 	/**
 	 * Reverse the migrations.

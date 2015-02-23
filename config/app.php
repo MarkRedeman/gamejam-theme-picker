@@ -137,6 +137,11 @@ return [
 		'Illuminate\View\ViewServiceProvider',
 
 		/*
+		*  Package Service Providers...
+		*/
+	    'Laracasts\Flash\FlashServiceProvider',
+
+		/*
 		 * Application Service Providers...
 		 */
 		'GameJam\Providers\AppServiceProvider',
@@ -192,6 +197,11 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+
+		/*
+		 * Package Aliases
+		 */
+	    'Flash' 	=> 'Laracasts\Flash\Flash'
 
 	],
 

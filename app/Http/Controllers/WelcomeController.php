@@ -1,5 +1,8 @@
 <?php namespace GameJam\Http\Controllers;
 
+use GameJam\Theme;
+use Auth;
+
 class WelcomeController extends Controller {
 
 	/**
@@ -9,7 +12,11 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
+        $themes = Theme::orderBy('total_votes', 'desc')->paginate(15);
+
+		return view('welcome.rankings')
+            ->with('themes', $themes)
+            ->with('user', Auth::user());
 	}
 
 }

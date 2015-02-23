@@ -17,7 +17,6 @@ class UserWasConfirmed extends Event {
      */
     public function __construct($userId)
     {
-        var_dump("User was confirmed");
         $this->userId = $userId;
     }
 
