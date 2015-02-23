@@ -12,8 +12,8 @@
 */
 
 Route::get('/', 'WelcomeController@index');
-
 Route::get('home', 'HomeController@index');
+
 
 Route::group([
     'middleware' => 'admin',
@@ -21,6 +21,7 @@ Route::group([
     'prefix' => 'admin'
 ], function() {
     Route::resource('users', 'UsersController');
+    Route::resource('themes', 'ThemesController');
 });
 
 Route::controllers([

@@ -5,13 +5,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 use GameJam\Events\UserWasMadeAdmin;
 use GameJam\Events\UserWasRegistered;
+use GameJam\Events\UserWasConfirmed;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
-	use Authenticatable, CanResetPassword;
+	use Authenticatable, CanResetPassword, SoftDeletes;
+
+    protected $dates = ['deleted_at'];
 
 	/**
 	 * The database table used by the model.
@@ -40,7 +44,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 * @var array
 	 */
 	protected $casts = [
-	    'is_admin' => 'boolean',
+	    'is_admin'     => 'boolean',
+	    'is_confirmed' => 'boolean',
 	];
 
 	/**
@@ -54,6 +59,19 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 		// Notify any services
 		event(new UserWasMadeAdmin($this->id));
+	}
+
+	/**
+	 * Confirm that the user was registered
+	 * @event UserWasConfirmed
+	 * @return void
+	 */
+	public function confirm()
+	{
+		$this->is_confirmed = true;
+
+		// Notify any services
+		event(new UserWasConfirmed($this->id));
 	}
 
 	/**

@@ -13,11 +13,15 @@ class EventServiceProvider extends ServiceProvider {
 	protected $listen = [
 		'GameJam\Events\UserWasMadeAdmin' => [
 			'GameJam\Handlers\Events\NotifyByEmail@userWasMadeAdmin',
-			'GameJam\Handlers\Events\EventLogger@userWasMadeAdmin',
+			// 'GameJam\Handlers\Events\EventLogger@userWasMadeAdmin',
 		],
 
 		'GameJam\Events\UserWasRegistered' => [
-			'GameJam\Handlers\Events\EventLogger@userWasRegistered',
+			// 'GameJam\Handlers\Events\EventLogger@userWasRegistered',
+		],
+
+		'GameJam\Events\UserWasConfirmed' => [
+			// 'GameJam\Handlers\Events\EventLogger@userWasConfirmed',
 		],
 	];
 
@@ -31,7 +35,7 @@ class EventServiceProvider extends ServiceProvider {
 	{
 		parent::boot($events);
 
-		//
+		Event::subscribe('GameJam\Handlers\Events\EventLogger');
 	}
 
 }

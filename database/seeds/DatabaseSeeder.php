@@ -15,16 +15,10 @@ class DatabaseSeeder extends Seeder {
 	public function run()
 	{
 		Model::unguard();
+		$this->command->info('Start seeding');
 
-		DB::table('users')->truncate();
-		// registering default user
-		$user = User::create([
-			'email' 	=> env('ADMIN_EMAIL', 'markredeman@gmail.com'),
-			'password'  => bcrypt(env('ADMIN_PASSWORD', 'secret')),
-			'is_admin'  => true,
-		]);
-
-		// $this->call('UserTableSeeder');
+		$this->call('UserSeeder');
+		$this->call('ThemesSeeder');
 	}
 
 }
