@@ -77,7 +77,7 @@ return [
 			'driver'   => 'pgsql',
 			'host'     => $host,
 			'database' => $database,
-			'username' => $uesrname,
+			'username' => $username,
 			'password' => $password,
 			'charset'  => 'utf8',
 			'prefix'   => '',
