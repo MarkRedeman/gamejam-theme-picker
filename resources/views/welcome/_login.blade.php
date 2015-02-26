@@ -1,10 +1,10 @@
-<h4>Sign in before you vote</h4>
-<div class="hline"></div>
 {{-- <p>Once you sign in you can vote for themes or submit new themes</p> --}}
-<p>
-    In order to vote for themes or suggest new themes you need to login. You can sigin in directly by providing a valid emailadress and a password with minimally 3 characters.<br>
-</p>
 
+@include('welcome._register')
+
+<div class="spacing"></div>
+<h4>Already have an account?</h4>
+<div class="hline"></div>
 @if (count($errors) > 0)
     <div class="alert alert-danger">
         <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -38,10 +38,10 @@
             <button type="submit" class="btn btn-primary" style="margin-right: 15px;">
                 Sign in
             </button>
-
+{{--
             <p>
                 <a href="/auth/register">Don't have an account? Click here to register.</a>
-            </p>
+            </p> --}}
             {{-- <p>
                 <a href="/password/email">Forgot Your Password?</a>
             </p> --}}

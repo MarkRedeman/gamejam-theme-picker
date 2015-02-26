@@ -41,6 +41,10 @@
             <a href="{{ url('/') }}">
                 <h3>Francken Gamejam</h3>
             </a>
+            <p style="color:white">
+                This webpage is used to vote for themes to be used during the Francken Gamejam.
+                A randomly picked theme will be chosen from the top 3 themes.
+            </p>
             </div><!-- /row -->
         </div> <!-- /container -->
     </div><!-- /blue -->
