@@ -1,6 +1,7 @@
 <?php namespace GameJam\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use View;
 
 class AppServiceProvider extends ServiceProvider {
 
@@ -11,7 +12,11 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		//
+		// Using Closure based composers...
+        View::composer('welcome.layout', function($view)
+        {
+        	$view->with('user', null);
+        });
 	}
 
 	/**

@@ -39,7 +39,12 @@
                 Sign in
             </button>
 
-            <a href="/password/email">Forgot Your Password?</a>
+            <p>
+                <a href="/auth/register">Don't have an account? Click here to register.</a>
+            </p>
+            {{-- <p>
+                <a href="/password/email">Forgot Your Password?</a>
+            </p> --}}
         </div>
     </div>
 </form>

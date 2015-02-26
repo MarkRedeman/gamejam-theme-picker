@@ -11,11 +11,11 @@
     <title>Francken Gamejam - Pick a theme</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
 
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
@@ -27,7 +27,7 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script src="assets/js/modernizr.js"></script>
+    <script src="/assets/js/modernizr.js"></script>
   </head>
 
   <body>
@@ -38,7 +38,9 @@
     <div id="blue">
         <div class="container">
             <div class="row">
+            <a href="{{ url('/') }}">
                 <h3>Francken Gamejam</h3>
+            </a>
             </div><!-- /row -->
         </div> <!-- /container -->
     </div><!-- /blue -->
